@@ -1,20 +1,10 @@
-/* @font-face {
-	font-family: IRANSans;
-	font-style: normal;
-	font-weight: normal;
-
-	src: local("IRANSans"),
-		url("./Fonts/IRANSans/eot/IRANSansWeb.eot") format("embedded-opentype"),
-		url("./Fonts/IRANSans/woff2/IRANSansWeb.woff2") format("woff2"),
-		url("./Fonts/woff/IRANSansWeb.woff") format("woff"),
-		url("./Fonts/ttf/IRANSansWeb.ttf") format("truetype");
-} */
 @font-face {
 	font-family: "IRANSans";
 	src: local("IRANSans"),
-		url(./Fonts/IRANSans/woff/IRANSansWeb.woff) format("woff");
-	/* other formats include: 'woff2', 'truetype, 'opentype',
-							  'embedded-opentype', and 'svg' */
+		url(./Fonts/IRANSans/eot/IRANSansWeb.eot) format("embedded-opentype"),
+		url(./Fonts/IRANSans/woff2/IRANSansWeb.woff2) format("woff2"),
+		url(./Fonts/IRANSans/woff/IRANSansWeb.woff) format("woff"),
+		url(./Fonts/IRANSans/ttf/IRANSansWeb.ttf) format("truetype");
 }
 * {
 	box-sizing: border-box;
