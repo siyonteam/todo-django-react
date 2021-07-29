@@ -15,10 +15,10 @@ function Main() {
 				</form>
 			</div>
 			<div className='Main__list'>
-				<TodoItem />
-				<TodoItem />
-				<TodoItem />
-				<TodoItem />
+				<TodoItem value='hi' />
+				<TodoItem value='سلام این یک تست است' />
+				<TodoItem value='hi' />
+				<TodoItem value='hi' />
 			</div>
 		</div>
 	);
