@@ -1,0 +1,43 @@
+.Main {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 50px;
+}
+.Main__input {
+	width: 70%;
+	display: grid;
+	place-items: center;
+	border: 2px solid #1e88e5;
+	border-radius: 15px;
+}
+.Main__input--form {
+	width: 100%;
+
+	display: flex;
+	flex: 1;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px;
+}
+.Main__input--form > input {
+	width: 80%;
+	line-height: 20px;
+	outline: none;
+	border: none;
+}
+.Main__list {
+	width: 70%;
+	display: grid;
+	place-items: center;
+	border: 2px solid #1e88e5;
+	border-radius: 15px;
+	margin-top: 20px;
+}
+@media screen and (max-width: 960px) {
+	.Main__input {
+		width: 90%;
+	}
+}
