@@ -54,3 +54,22 @@ class ChangePasswordSerializer(serializers.Serializer):
         instance.set_password(validated_data['password1'])
         instance.save()
         return instance
+
+
+class ResetPasswordSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+
+
+    def validate_email(self, value):
+        try :
+            user = User.objects.get(email=value)
+        except :
+            raise serializers.ValidationError("the user with email does not exist")
+
+        return value
+
+
+
+class SetNewPassword(serializers.Serializer):
+    password1 = serializers.CharField(write_only=True , required = True , validators=[validate_password])
+    password2 = serializers.CharField(write_only=True , required = True)

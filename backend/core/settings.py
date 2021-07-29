@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
 
+
     # local apps
     'accounts.apps.AccountsConfig',
     'todo.apps.TodoConfig',
@@ -142,3 +143,5 @@ REST_FRAMEWORK = {
     ],
 }
 
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

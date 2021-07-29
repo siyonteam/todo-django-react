@@ -1,10 +1,16 @@
 from django.contrib.auth import authenticate
-from rest_framework import generics
+from django.contrib.auth.models import User
+from rest_framework import generics, serializers
+from django.utils.http import urlsafe_base64_decode , urlsafe_base64_encode
+from django.utils.encoding import smart_bytes, smart_str
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from rest_framework import status
 from rest_framework.response import Response
+from django.http import HttpResponseRedirect
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import AllowAny
-from .serilizers import RegisterSerializer , ChangePasswordSerializer , LoginSerializer
+from django.core.mail import send_mail
+from .serilizers import RegisterSerializer , ChangePasswordSerializer , LoginSerializer , ResetPasswordSerializer , SetNewPassword
 
 
 class RegisterApi(generics.GenericAPIView):
@@ -64,5 +70,61 @@ class ChangePasswordApi(generics.GenericAPIView):
         }
 
         return Response(response , status=status.HTTP_200_OK)        
+
+
+class ResetPasswordApi(generics.GenericAPIView):
+    serializer_class = ResetPasswordSerializer
+    permission_classes = [AllowAny,]
+
+
+    def post(self , request):
+        serializer = self.get_serializer( data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = User.objects.get(email = serializer.validated_data['email'])
+        uidb64 = urlsafe_base64_encode(smart_bytes(user.id))
+        token = PasswordResetTokenGenerator().make_token(user)
+        
+        url = request.build_absolute_uri(f'confirm/{token}/{uidb64}/')
+        
+        send_mail(
+            'Reset password',
+            url,
+            'from todo',
+            [user.email,]
+        )
+        return Response({'status':'1',"message":"the link sended to the email"} , status=status.HTTP_200_OK)
+
+
+class PasswordResetConfirmApi(generics.GenericAPIView):
+    serializer_class = SetNewPassword
+    permission_classes = [AllowAny,]
+
+
+    def valid_link(self , token , uidb64):
+        try :
+            user_id = smart_str(urlsafe_base64_decode(uidb64))
+            user = User.objects.get(id=user_id)
+
+        except :
+            return False
+
+        if not PasswordResetTokenGenerator().check_token(user , token):
+            return False
+
+        return True
+
+    def post(self , request , token , uidb64):
+        if not self.valid_link(token , uidb64):
+            return Response({'status':"0" , "message":"invalid link"})
+            
+        serializer = self.get_serializer( data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user_id = smart_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(id=user_id)
+        user.set_password(serializer.validated_data["password1"])
+        user.save()
+        return Response({"status":"1" , "message":"password successfuly reseted"})
+        
+
 
 
