@@ -6,13 +6,15 @@ import EditIcon from "@material-ui/icons/Edit";
 function TodoItem({ list, value, onRemove = (f) => f }) {
 	return list.map((todo, index) => (
 		<div key={index} className='TodoItem'>
-			<div className='TodoItem__text'>{todo.text}</div>
+			<div className='TodoItem__text'>
+				<p>{todo.text}</p>
+			</div>
 			<div className='TodoItem__buttons'>
-				<Button variant='success'>
+				<Button variant='light' size='sm'>
 					<EditIcon />
 				</Button>
 				<Button
-					variant='danger'
+					variant='light'
 					size='sm'
 					onClick={() => onRemove(todo.id)}>
 					<DeleteIcon />

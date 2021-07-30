@@ -14,12 +14,25 @@
 	align-items: center;
 	justify-content: space-between;
 	border-radius: 0.4rem;
-	background: rgb(99, 0, 138);
+	background: #0052d4; /* fallback for old browsers */
+	background: -webkit-linear-gradient(
+		to right,
+		#0052d4,
+		#6681fd,
+		#4f9cf5
+	); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(
+		to right,
+		#0052d4,
+		#6681fd,
+		#4f9cf5
+	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	/* background: rgb(99, 0, 138);
 	background: linear-gradient(
 		90deg,
 		rgba(99, 0, 138, 1) 0%,
 		rgba(175, 0, 244, 0.6418768190870099) 100%
-	);
+	); */
 	padding: 0.22rem;
 }
 .TodoInput__form > input {
@@ -34,13 +47,8 @@
 .TodoInput__form > button {
 	width: 70px;
 	height: 47px;
-	background: rgb(99, 0, 138);
-	background: linear-gradient(
-		90deg,
-		rgba(99, 0, 138, 1) 60%,
-		rgba(99, 0, 138, 1) 100%
-	);
-	border: rgb(99, 0, 138);
+	background: #0957d4;
+	border: #0957d4;
 	color: white;
 	font-weight: 600;
 	margin-right: 10px;

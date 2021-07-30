@@ -1,5 +1,6 @@
 .TodoItem {
 	width: 80%;
+
 	margin-right: 0px;
 	display: flex;
 	justify-content: space-between;
@@ -63,13 +64,15 @@
 .TodoItem:last-child {
 	border: none;
 }
-.TodoItem__text {
-	display: inline-block;
+.TodoItem > .TodoItem__text {
+	flex: 1;
 }
 .TodoItem__buttons {
-	flex: 0.2;
 	display: flex;
 	align-items: center;
+}
+.TodoItem__buttons .MuiSvgIcon-root {
+	color: #212121;
 }
 .TodoItem__buttons > button {
 	margin-right: 10px;
