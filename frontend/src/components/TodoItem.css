@@ -1,6 +1,6 @@
 .TodoItem {
-	width: 80%;
-
+	width: 100%;
+	border-radius: 0.4rem;
 	margin-right: 0px;
 	display: flex;
 	justify-content: space-between;
