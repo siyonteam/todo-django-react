@@ -1,10 +1,15 @@
 .Header {
+	position: static;
+	top: 0;
+	z-index: 100;
 	width: 100%;
 	height: 50px;
-	background-color: #1e88e5;
+	background: #212121; /* fallback for old browsers */
+
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
+	margin-top: 0px;
 }
 .Header__right > ul {
 	display: flex;

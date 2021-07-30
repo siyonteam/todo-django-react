@@ -1,0 +1,53 @@
+.TodoInput {
+	width: 90%;
+	display: grid;
+	place-items: center;
+
+	/* border: 2px solid #1e88e5; */
+	border-radius: 0.4rem;
+	margin-bottom: 20px;
+}
+.TodoInput__form {
+	width: 100%;
+	display: flex;
+	flex: 1;
+	align-items: center;
+	justify-content: space-between;
+	border-radius: 0.4rem;
+	background: rgb(99, 0, 138);
+	background: linear-gradient(
+		90deg,
+		rgba(99, 0, 138, 1) 0%,
+		rgba(175, 0, 244, 0.6418768190870099) 100%
+	);
+	padding: 0.22rem;
+}
+.TodoInput__form > input {
+	width: 80%;
+	outline: none;
+	line-height: 40px;
+	border: none;
+	width: 100%;
+	font-size: 30px;
+	border-radius: 0.4rem;
+}
+.TodoInput__form > button {
+	width: 70px;
+	height: 47px;
+	background: rgb(99, 0, 138);
+	background: linear-gradient(
+		90deg,
+		rgba(99, 0, 138, 1) 60%,
+		rgba(99, 0, 138, 1) 100%
+	);
+	border: rgb(99, 0, 138);
+	color: white;
+	font-weight: 600;
+	margin-right: 10px;
+}
+
+@media screen and (max-width: 960px) {
+	.TodoInput__form > input {
+		font-size: 3vw;
+	}
+}

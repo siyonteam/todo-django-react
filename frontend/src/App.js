@@ -1,8 +1,8 @@
 import "./App.css";
-import Header from "./Header";
+import Header from "./components/Header";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import SignInUp from "./SignInUp";
-import Main from "./Main";
+import SignInUp from "./components/SignInUp";
+import Main from "./components/Main";
 function App() {
 	return (
 		<Router>
