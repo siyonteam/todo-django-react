@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./TodoInput.css";
-
+import "./TodoInput.scss";
 import { v4 } from "uuid";
 function TodoInput(props) {
 	const [input, setInput] = useState("");

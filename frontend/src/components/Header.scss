@@ -18,15 +18,29 @@
 	list-style: none;
 	margin-top: 10px;
 }
-.Header__right > ul > a > li {
+
+.Header__right > ul > li {
 	margin-left: 20px;
-}
-.Header__right > ul > a {
 	text-decoration: none;
 	color: white;
 	font-family: IRANSans;
+	cursor: pointer;
 }
-
+.Header__right > ul > .rodal > .rodal-dialog {
+	width: 600px !important;
+	height: 520px !important;
+	// background: rgb(0, 151, 255) !important;
+	// background: linear-gradient(
+	// 	90deg,
+	// 	rgba(0, 151, 255, 1) 0%,
+	// 	rgba(61, 170, 255, 1) 100%
+	// ) !important;
+}
+.Header__right > ul > .rodal > .rodal-dialog > .rodal-close {
+	background-color: white;
+	border-radius: 20px;
+	padding: 10px;
+}
 .Header__left {
 	flex: 0.4;
 }
@@ -49,4 +63,10 @@
 
 .Header__left--searchBox > .MuiSvgIcon-root {
 	color: gray;
+}
+
+@media screen and (max-width: 960px) {
+	.Header__right > ul > .rodal > .rodal-dialog {
+		width: 100% !important;
+	}
 }

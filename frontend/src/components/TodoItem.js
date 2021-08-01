@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./TodoItem.css";
+import "./TodoItem.scss";
 import { Button } from "react-bootstrap";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";

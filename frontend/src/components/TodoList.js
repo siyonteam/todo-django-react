@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./TodoList.css";
+import "./TodoList.scss";
 import TodoItem from "./TodoItem";
 import TodoInput from "./TodoInput";
 function TodoList({ list, onRemove }) {
