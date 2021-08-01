@@ -77,3 +77,7 @@
 .TodoItem__buttons > button {
 	margin-right: 10px;
 }
+.complete {
+	text-decoration: line-through;
+	opacity: 0.5;
+}

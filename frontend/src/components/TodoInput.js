@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./TodoInput.css";
 
 import { v4 } from "uuid";
 function TodoInput(props) {
 	const [input, setInput] = useState("");
+
+	const inputRef = useRef(null);
+
+	useEffect(() => inputRef.current.focus());
+
 	const handleChange = (e) => {
 		setInput(e.target.value);
 	};
@@ -20,8 +25,28 @@ function TodoInput(props) {
 	return (
 		<div className='TodoInput'>
 			<form className='TodoInput__form' onSubmit={handleSubmit}>
-				<input type='text' value={input} onChange={handleChange} />
-				<button onClick={handleSubmit}>Add</button>
+				{props.edit ? (
+					<>
+						<input
+							type='text'
+							placeholder='ویرایش'
+							value={input}
+							onChange={handleChange}
+							ref={inputRef}
+						/>
+						<button>Update</button>
+					</>
+				) : (
+					<>
+						<input
+							type='text'
+							value={input}
+							onChange={handleChange}
+							ref={inputRef}
+						/>
+						<button>Add</button>
+					</>
+				)}
 			</form>
 		</div>
 	);
