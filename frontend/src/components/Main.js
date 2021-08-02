@@ -3,7 +3,7 @@ import "./Main.scss";
 
 import TodoList from "./TodoList";
 import "rodal/lib/rodal.css";
-function Main() {
+function Main({ searchValue }) {
 	return (
 		<div className='Main'>
 			<TodoList />
