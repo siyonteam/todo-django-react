@@ -2,8 +2,15 @@ import React, { useState } from "react";
 import "./TodoList.scss";
 import TodoItem from "./TodoItem";
 import TodoInput from "./TodoInput";
-function TodoList({ list, onRemove }) {
+
+function TodoList({ onRemove, searchValue }) {
 	const [todos, setTodos] = useState([]);
+	const [search, setSearch] = useState("");
+	const [searchTodos, setSearchTodos] = useState([]);
+	React.useEffect(() => {
+		setSearch(searchValue);
+		setSearchTodos(todos.filter((todo) => todo.text === search));
+	}, [searchValue, search, todos]);
 	const addTodo = (todo) => {
 		if (!todo.text || /^\s*$/.test(todo.text)) return;
 
@@ -31,16 +38,26 @@ function TodoList({ list, onRemove }) {
 		});
 		setTodos(updatedTodos);
 	};
+
 	return (
 		<div className='TodoList'>
 			<TodoInput onSubmit={addTodo} buttonText={"Add"} />
 			<div className='TodoList__items'>
-				<TodoItem
-					list={todos}
-					onRemove={removeTodo}
-					onComplete={completeTodo}
-					onEdit={updateTodo}
-				/>
+				{searchValue ? (
+					<TodoItem
+						list={searchTodos}
+						onRemove={removeTodo}
+						onComplete={completeTodo}
+						onEdit={updateTodo}
+					/>
+				) : (
+					<TodoItem
+						list={todos}
+						onRemove={removeTodo}
+						onComplete={completeTodo}
+						onEdit={updateTodo}
+					/>
+				)}
 			</div>
 		</div>
 	);

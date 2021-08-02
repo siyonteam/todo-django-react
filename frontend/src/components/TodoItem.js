@@ -16,6 +16,7 @@ function TodoItem({ list, value, onRemove, onComplete, onEdit }) {
 			value: "",
 		});
 	};
+
 	if (edit.id) {
 		return (
 			<TodoInput
@@ -25,6 +26,7 @@ function TodoItem({ list, value, onRemove, onComplete, onEdit }) {
 			/>
 		);
 	}
+
 	return list.map((todo, index) => (
 		<div
 			key={index}

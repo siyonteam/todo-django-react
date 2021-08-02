@@ -8,9 +8,6 @@ function App() {
 	const callBackFuncion = (childData) => {
 		setCallback(childData);
 	};
-	React.useEffect(() => {
-		console.log(callback);
-	});
 
 	return (
 		<div className='App'>
