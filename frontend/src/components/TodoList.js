@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./TodoList.scss";
 import TodoItem from "./TodoItem";
 import TodoInput from "./TodoInput";
@@ -7,9 +7,13 @@ function TodoList({ onRemove, searchValue }) {
 	const [todos, setTodos] = useState([]);
 	const [search, setSearch] = useState("");
 	const [searchTodos, setSearchTodos] = useState([]);
-	React.useEffect(() => {
+	useEffect(() => {
 		setSearch(searchValue);
-		setSearchTodos(todos.filter((todo) => todo.text === search));
+		setSearchTodos(
+			todos.filter((todo) =>
+				todo.text.toLowerCase().includes(search.toLowerCase())
+			)
+		);
 	}, [searchValue, search, todos]);
 	const addTodo = (todo) => {
 		if (!todo.text || /^\s*$/.test(todo.text)) return;

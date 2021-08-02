@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import "./TodoInput.scss";
 import { v4 } from "uuid";
 function TodoInput(props) {
 	const [input, setInput] = useState("");
 
-	const inputRef = useRef(null);
+	// const inputRef = useRef(null);
 
-	useEffect(() => inputRef.current.focus());
+	// useEffect(() => inputRef.current.focus());
 
 	const handleChange = (e) => {
 		setInput(e.target.value);
@@ -31,7 +31,6 @@ function TodoInput(props) {
 							placeholder='ویرایش'
 							value={input}
 							onChange={handleChange}
-							ref={inputRef}
 						/>
 						<button>Update</button>
 					</>
@@ -41,7 +40,6 @@ function TodoInput(props) {
 							type='text'
 							value={input}
 							onChange={handleChange}
-							ref={inputRef}
 						/>
 						<button>Add</button>
 					</>

@@ -4,14 +4,12 @@ import { SearchOutlined } from "@material-ui/icons";
 import SignInUp from "./login/SignInUp";
 function Header({ parentCallback }) {
 	const [signInUp, setSignInUp] = useState(false);
-	const [search, setSearch] = useState("");
+
 	const handleSearch = (e) => {
-		setSearch(e.target.value);
+		parentCallback(e.target.value);
+		// it will send to App js every time that search input value changes
 	};
-	const sendParent = (e) => {
-		e.preventDefault();
-		parentCallback(search);
-	};
+
 	const openSign = () => {
 		setSignInUp(true);
 	};
@@ -34,17 +32,12 @@ function Header({ parentCallback }) {
 
 				<div className='Header__left--searchBox'>
 					<SearchOutlined />
-					<form action='' onSubmit={sendParent}>
-						<input
-							type='text'
-							placeholder='Search'
-							value={search}
-							onChange={handleSearch}
-						/>
-						<button
-							type='submit'
-							style={{ display: "none" }}></button>
-					</form>
+
+					<input
+						type='text'
+						placeholder='Search'
+						onChange={handleSearch}
+					/>
 				</div>
 			</div>
 		</div>
