@@ -2,15 +2,23 @@ import React, { useState } from "react";
 import "./Header.scss";
 import { SearchOutlined } from "@material-ui/icons";
 import SignInUp from "./login/SignInUp";
-function Header() {
+function Header({ parentCallback }) {
 	const [signInUp, setSignInUp] = useState(false);
-
+	const [search, setSearch] = useState("");
+	const handleSearch = (e) => {
+		setSearch(e.target.value);
+	};
+	const sendParent = (e) => {
+		e.preventDefault();
+		parentCallback(search);
+	};
 	const openSign = () => {
 		setSignInUp(true);
 	};
 	const closeSign = () => {
 		setSignInUp(false);
 	};
+
 	return (
 		<div className='Header'>
 			<div className='Header__right'>
@@ -26,7 +34,17 @@ function Header() {
 
 				<div className='Header__left--searchBox'>
 					<SearchOutlined />
-					<input type='text' placeholder='Search' />
+					<form action='' onSubmit={sendParent}>
+						<input
+							type='text'
+							placeholder='Search'
+							value={search}
+							onChange={handleSearch}
+						/>
+						<button
+							type='submit'
+							style={{ display: "none" }}></button>
+					</form>
 				</div>
 			</div>
 		</div>

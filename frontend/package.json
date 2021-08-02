@@ -2,7 +2,7 @@
 	"name": "frontend",
 	"version": "0.1.0",
 	"private": true,
-	"homepage": "http://siyonteam.github.io/todo-django-react",
+	"homepage": "http://siamak1380.github.io/react-todo-list",
 	"dependencies": {
 		"@fortawesome/fontawesome-svg-core": "^1.2.35",
 		"@fortawesome/free-solid-svg-icons": "^5.15.3",

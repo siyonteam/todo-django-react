@@ -1,14 +1,17 @@
 import "./App.scss";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import SignInUp from "./components/login/SignInUp";
 import Main from "./components/Main";
 function App() {
+	const [callback, setCallback] = useState("");
+	const callBackFuncion = (childData) => {
+		setCallback(childData);
+	};
+
 	return (
 		<div className='App'>
-			<Header />
-
-			<SignInUp />
+			<Header parentCallback={callBackFuncion} />
 
 			<Main />
 		</div>
