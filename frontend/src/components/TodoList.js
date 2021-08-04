@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./TodoList.scss";
 import TodoItem from "./TodoItem";
 import TodoInput from "./TodoInput";
-
+import { connect } from "react-redux";
+import { fetchTodos } from "../actions/todoActions";
 function TodoList({ onRemove, searchValue }) {
 	const [todos, setTodos] = useState([]);
 	const [search, setSearch] = useState("");
