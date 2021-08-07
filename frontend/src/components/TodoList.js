@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./TodoList.scss";
 import TodoItem from "./TodoItem";
 import TodoInput from "./TodoInput";
-import { connect } from "react-redux";
-import { fetchTodos } from "../actions/todoActions";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
+// import { connect } from "react-redux";
+// import { fetchTodos } from "../actions/todoActions";
 function TodoList({ onRemove, searchValue }) {
 	const [todos, setTodos] = useState([]);
 	const [search, setSearch] = useState("");
@@ -16,6 +17,13 @@ function TodoList({ onRemove, searchValue }) {
 			)
 		);
 	}, [searchValue, search, todos]);
+	const handleOnDragEnd = (result) => {
+		if (!result.destination) return;
+		const items = Array.from(todos);
+		const [reorderedItem] = items.splice(result.source.index, 1);
+		items.splice(result.destination.index, 0, reorderedItem);
+		setTodos(items);
+	};
 	const addTodo = (todo) => {
 		if (!todo.text || /^\s*$/.test(todo.text)) return;
 
@@ -47,23 +55,33 @@ function TodoList({ onRemove, searchValue }) {
 	return (
 		<div className='TodoList'>
 			<TodoInput onSubmit={addTodo} buttonText={"Add"} />
-			<div className='TodoList__items'>
-				{searchValue ? (
-					<TodoItem
-						list={searchTodos}
-						onRemove={removeTodo}
-						onComplete={completeTodo}
-						onEdit={updateTodo}
-					/>
-				) : (
-					<TodoItem
-						list={todos}
-						onRemove={removeTodo}
-						onComplete={completeTodo}
-						onEdit={updateTodo}
-					/>
-				)}
-			</div>
+			<DragDropContext onDragEnd={handleOnDragEnd}>
+				<Droppable droppableId='todoslist'>
+					{(provided) => (
+						<div
+							className='TodoList__items'
+							{...provided.droppableProps}
+							ref={provided.innerRef}>
+							{searchValue ? (
+								<TodoItem
+									list={searchTodos}
+									onRemove={removeTodo}
+									onComplete={completeTodo}
+									onEdit={updateTodo}
+								/>
+							) : (
+								<TodoItem
+									list={todos}
+									onRemove={removeTodo}
+									onComplete={completeTodo}
+									onEdit={updateTodo}
+								/>
+							)}
+							{provided.placeholder}
+						</div>
+					)}
+				</Droppable>
+			</DragDropContext>
 		</div>
 	);
 }
