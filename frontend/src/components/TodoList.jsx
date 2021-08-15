@@ -5,7 +5,7 @@ import TodoInput from "./TodoInput";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 // import { connect } from "react-redux";
 // import { fetchTodos } from "../actions/todoActions";
-function TodoList({ onRemove, searchValue }) {
+function TodoList({ searchValue }) {
 	const [todos, setTodos] = useState([]);
 	const [search, setSearch] = useState("");
 	const [searchTodos, setSearchTodos] = useState([]);
