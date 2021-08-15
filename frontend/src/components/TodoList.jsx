@@ -3,9 +3,11 @@ import "./TodoList.scss";
 import TodoItem from "./TodoItem";
 import TodoInput from "./TodoInput";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
-// import { connect } from "react-redux";
-// import { fetchTodos } from "../actions/todoActions";
+import { useDispatch, useSelector } from "react-redux";
 function TodoList({ searchValue }) {
+	const todo = useSelector((state) => state.todo);
+	const auth = useSelector((state) => state.auth);
+	const dispatch = useDispatch();
 	const [todos, setTodos] = useState([]);
 	const [search, setSearch] = useState("");
 	const [searchTodos, setSearchTodos] = useState([]);
