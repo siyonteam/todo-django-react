@@ -1,10 +1,10 @@
 const loginReducer = (state = false, action) => {
 	switch (action.type) {
 		case "SIGN_IN":
-			return !state;
+			return !state
 		default:
-			return state;
+			return state
 	}
-};
+}
 
-export default loginReducer;
+export default loginReducer

@@ -1,23 +1,34 @@
-export const addTodo = () => {
+export const addTodo = (description) => {
 	return {
 		type: "TODO_ADD",
-	};
-};
+		payload: {
+			description,
+		},
+	}
+}
 
 export const removeTodo = (id) => {
 	return {
 		type: "TODO_REMOVE",
-		payload: id,
-	};
-};
-export const editTodo = (editString) => {
+		payload: {
+			id,
+		},
+	}
+}
+export const editTodo = (id, description) => {
 	return {
 		type: "TODO_EDIT",
-		payload: editString,
-	};
-};
-export const completeTodo = () => {
+		payload: {
+			id,
+			description,
+		},
+	}
+}
+export const completeTodo = (id) => {
 	return {
 		type: "TODO_COMPLETE",
-	};
-};
+		payload: {
+			id,
+		},
+	}
+}
