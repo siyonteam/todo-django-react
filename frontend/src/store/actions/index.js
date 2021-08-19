@@ -1,6 +1,8 @@
+import { TODO_ADD, TODO_REMOVE, TODO_EDIT, TODO_COMPLETE } from "./types"
+
 export const addTodo = (description) => {
 	return {
-		type: "TODO_ADD",
+		type: TODO_ADD,
 		payload: {
 			description,
 		},
@@ -9,7 +11,7 @@ export const addTodo = (description) => {
 
 export const removeTodo = (id) => {
 	return {
-		type: "TODO_REMOVE",
+		type: TODO_REMOVE,
 		payload: {
 			id,
 		},
@@ -17,7 +19,7 @@ export const removeTodo = (id) => {
 }
 export const editTodo = (id, description) => {
 	return {
-		type: "TODO_EDIT",
+		type: TODO_EDIT,
 		payload: {
 			id,
 			description,
@@ -26,7 +28,7 @@ export const editTodo = (id, description) => {
 }
 export const completeTodo = (id) => {
 	return {
-		type: "TODO_COMPLETE",
+		type: TODO_COMPLETE,
 		payload: {
 			id,
 		},

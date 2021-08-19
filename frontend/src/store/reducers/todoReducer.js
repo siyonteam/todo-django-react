@@ -1,15 +1,33 @@
-const todoReducer = (state, action) => {
+import { TODO_ADD, TODO_REMOVE, TODO_EDIT, TODO_COMPLETE } from "./types"
+import { v4 } from "uuid"
+
+const todoReducer = (state = [], action) => {
 	switch (action.type) {
-		case "TODO_ADD":
-			return;
-		case "TODO_REMOVE":
-			return;
-		case "TODO_EDIT":
-			return;
-		case "TODO_COMPLETE":
-			return;
+		case TODO_ADD:
+			return [
+				...state,
+				{
+					id: v4(),
+					description: action.payload.description,
+					completed: false,
+				},
+			]
+		case TODO_REMOVE:
+			return state.filter((state) => state.id !== action.payload.id)
+		case TODO_EDIT:
+			return state.map((state) =>
+				state.id !== action.payload.id
+					? state
+					: { ...state, description: action.payload.description }
+			)
+		case TODO_COMPLETE:
+			return state.map((state) =>
+				state.id !== action.payload.id
+					? state
+					: { ...state, completed: true }
+			)
 		default:
-			return;
+			return state
 	}
-};
-export default todoReducer;
+}
+export default todoReducer
