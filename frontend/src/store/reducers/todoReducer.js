@@ -1,5 +1,10 @@
-import { TODO_ADD, TODO_REMOVE, TODO_EDIT, TODO_COMPLETE } from "./types"
-import { v4 } from "uuid"
+import {
+	TODO_ADD,
+	TODO_REMOVE,
+	TODO_EDIT,
+	TODO_COMPLETE,
+} from '../actions/types'
+import { v4 } from 'uuid'
 
 const todoReducer = (state = [], action) => {
 	switch (action.type) {

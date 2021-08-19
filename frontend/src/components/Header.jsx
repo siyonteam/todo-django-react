@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import "./Header.scss";
-import { SearchOutlined } from "@material-ui/icons";
-import SignInUp from "./login/SignInUp";
+import React, { useState } from 'react'
+import './Header.scss'
+import { SearchOutlined } from '@material-ui/icons'
+import SignInUp from './login/SignInUp'
 function Header({ parentCallback }) {
-	const [signInUp, setSignInUp] = useState(false);
+	const [signInUp, setSignInUp] = useState(false)
 
 	const handleSearch = (e) => {
-		parentCallback(e.target.value);
+		parentCallback(e.target.value)
 		// it will send to App js every time that search input value changes
-	};
+	}
 
 	const openSign = () => {
-		setSignInUp(true);
-	};
+		setSignInUp(true)
+	}
 	const closeSign = () => {
-		setSignInUp(false);
-	};
+		setSignInUp(false)
+	}
 
 	return (
 		<div className='Header'>
@@ -41,7 +41,7 @@ function Header({ parentCallback }) {
 				</div>
 			</div>
 		</div>
-	);
+	)
 }
 
-export default Header;
+export default Header

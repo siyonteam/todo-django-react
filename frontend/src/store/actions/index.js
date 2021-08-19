@@ -1,4 +1,4 @@
-import { TODO_ADD, TODO_REMOVE, TODO_EDIT, TODO_COMPLETE } from "./types"
+import { TODO_ADD, TODO_REMOVE, TODO_EDIT, TODO_COMPLETE } from './types'
 
 export const addTodo = (description) => {
 	return {
