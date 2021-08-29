@@ -4,6 +4,7 @@ import {
 	TODO_EDIT,
 	TODO_COMPLETE,
 } from '../actions/types'
+
 import { v4 } from 'uuid'
 
 const todoReducer = (state = [], action) => {
@@ -35,4 +36,5 @@ const todoReducer = (state = [], action) => {
 			return state
 	}
 }
+
 export default todoReducer
